@@ -6,36 +6,6 @@
 # github:https://github.com/wuming2018
 # -------------------------
 
-while [[ $# > 0 ]]
-do
-key="$1"
-
-case $key in
-    -p|--proxy)
-    PROXY="$2"
-    shift # past argument
-    ;;
-    -h|--help)
-    HELP="1"
-    ;;
-    -f|--force)
-    FORCE="1"
-    ;;
-    --version)
-    VERSION="$2"
-    shift
-    ;;
-    --local)
-    LOCAL="$2"
-    shift
-    ;;
-    *)
-            # unknown option
-    ;;
-esac
-shift # past argument or value
-done
-
 yum install -y curl unzip
 
 VER="$(curl -s https://api.github.com/repos/v2ray/v2ray-core/releases/latest | grep 'tag_name' | cut -d\" -f4)"
@@ -56,13 +26,8 @@ DOWNLOAD_LINK="https://github.com/v2ray/v2ray-core/releases/download/${VER}/v2ra
 rm -rf /tmp/v2ray
 mkdir -p /tmp/v2ray
 
-  if [ -n "${PROXY}" ]; then
-    echo "Downloading ${DOWNLOAD_LINK} via proxy ${PROXY}."
-    curl -x ${PROXY} -L -H "Cache-Control: no-cache" -o "/tmp/v2ray/v2ray.zip" ${DOWNLOAD_LINK}
-  else
     echo "Downloading ${DOWNLOAD_LINK} directly."
     curl -L -H "Cache-Control: no-cache" -o "/tmp/v2ray/v2ray.zip" ${DOWNLOAD_LINK}
-  fi
 
 echo "Extracting V2Ray package to /tmp/v2ray."
 unzip "/tmp/v2ray/v2ray.zip" -d "/tmp/v2ray/"
@@ -94,10 +59,11 @@ killall v2ray
 # 后台运行程序
 nohup /usr/bin/v2ray/v2ray -config /etc/v2ray/config.json >/dev/null 2>/dev/null &
 
+echo "V2Ray ${VER} is installed."
 echo "配置文件:"
 echo "     端口: ${PORT}"
 echo "     UUID: ${UUID}"
-echo "  AlterID: 0"
+echo "  AlterID: 64"
 echo "--------------"
 echo -e "停止:   killall v2ray"
 echo -e "运行:   nohup /usr/bin/v2ray/v2ray -config /etc/v2ray/config.json >/dev/null 2>/dev/null &"
