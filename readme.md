@@ -10,12 +10,12 @@ curl https://getcaddy.com | bash
 # 可以加-s参数安装插件 如安装文件柜插件: curl https://getcaddy.com | bash -s http.filemanager
 ```
 
-一键脚本:
+centos6x
 ```
 wget -N --no-check-certificate https://raw.githubusercontent.com/wuming2018/wuming/master/v2-centos6.sh && bash v2-centos6.sh
 ```
 
-一键v2-ws caddy-tls 配置文件
+conf
 ```
 wget -N --no-check-certificate https://raw.githubusercontent.com/wuming2018/wuming/master/v2conf.sh && bash v2conf.sh
 ```
