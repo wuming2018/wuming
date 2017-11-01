@@ -57,7 +57,7 @@ grep -q "nohup /usr/bin/v2ray/v2ray -config /etc/v2ray/config.json" /etc/rc.d/rc
 # 清除 v2ray 进程
 killall v2ray
 # 后台运行程序
-nohup /usr/bin/v2ray/v2ray -config /etc/v2ray/config.json >/dev/null 2>/dev/null &
+#nohup /usr/bin/v2ray/v2ray -config /etc/v2ray/config.json >/dev/null 2>/dev/null &
 
 echo "V2Ray ${VER} is installed."
 echo "配置文件:"
@@ -65,10 +65,10 @@ echo "     端口: ${PORT}"
 echo "     UUID: ${UUID}"
 echo "  AlterID: 64"
 echo "--------------"
+echo -e "配置文件在/etc/v2ray/config.json"
 echo -e "停止:   killall v2ray"
 echo -e "运行:   nohup /usr/bin/v2ray/v2ray -config /etc/v2ray/config.json >/dev/null 2>/dev/null &"
-echo -e "配置文件在/etc/v2ray/config.json"
-
+echo -e "注意:先 停止 然后再 运行,不然可能会在后台多次运行v2ray进程"
 # 用netstat命令查看端口占用情况
 echo "执行 netstat -lntp 如果看到v2ray已占用${PORT}端口说明已经运行了"
-netstat -lntp
+#netstat -lntp
