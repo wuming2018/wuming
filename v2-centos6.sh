@@ -44,9 +44,7 @@ unzip "/tmp/v2ray/v2ray.zip" -d "/tmp/v2ray/"
 
 mkdir -p /var/log/v2ray
 mkdir -p /usr/bin/v2ray
-cp "/tmp/v2ray/v2ray-${VER}-linux-${VDIS}/v2ray" "/usr/bin/v2ray/v2ray"
-cp "/tmp/v2ray/v2ray-${VER}-linux-${VDIS}/geoip.dat" "/usr/bin/v2ray/geoip.dat"
-cp "/tmp/v2ray/v2ray-${VER}-linux-${VDIS}/geosite.dat" "/usr/bin/v2ray/geosite.dat"
+cp "/tmp/v2ray/v2ray-${VER}-linux-${VDIS}/*.*" "/usr/bin/v2ray/"
 chmod +x "/usr/bin/v2ray/v2ray"
 
 mkdir -p /etc/v2ray
